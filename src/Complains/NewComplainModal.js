@@ -30,7 +30,7 @@ const NewComplainModal = ({ addComplain }) => {
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                        <button onClick={() => addComplain(form)} type="button" className="btn btn-custom">Add</button>
+                        <button onClick={() => addComplain(form)} type="button" data-bs-dismiss="modal" className="btn btn-custom">Add</button>
                     </div>
                 </div>
             </div>

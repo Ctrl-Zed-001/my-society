@@ -1,16 +1,19 @@
+import dayjs from 'dayjs'
 import React from 'react'
 
-const ViewComplainModal = ({ title, description, date, status }) => {
+const ViewComplainModal = ({ complain }) => {
     return (
         <div className="modal fade" id="viewComplainModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog modal-fullscreen">
                 <div className="modal-content">
                     <div className="modal-header">
-                        <h5 className="modal-title">{title}</h5>
+                        <h5 className="modal-title">{complain.title}</h5>
                     </div>
                     <div className="modal-body">
+                        <p className="mb-1">{dayjs(complain.date).format('DD-MMM-YYYY')}</p>
+                        <p className="fw-bold mb-3 text-danger">{complain.status}</p>
                         <p className="text-justify">
-                            {description}
+                            {complain.detail}
                         </p>
                     </div>
                     <div className="modal-footer">
