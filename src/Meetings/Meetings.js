@@ -25,15 +25,14 @@ const Meetings = () => {
     useEffect(
         () => {
             if (meets.length === 0) {
-                console.log("getting")
                 getMeetings()
             }
         }, []
     )
 
     const newMeeting = (newData) => {
-        const timing = Date.parse(`${newData.date} ${newData.time}`)
-        Axios.post(`${api}/meeting/new`, { subject: newData.subject, date_time: new Date(timing) })
+        const timing = Date.parse(`${newData.date} ${newData.time}`);
+        Axios.post(`${api}/meeting/new`, { subject: newData.subject, date_time: new Date(timing), status: "upcoming" })
             .then(res => {
                 dispatch({ type: "NEWMEETING", payload: res.data })
             })
@@ -46,9 +45,17 @@ const Meetings = () => {
 
     const newSchedule = (scheduledata) => {
         const newtiming = Date.parse(`${scheduledata.date} ${scheduledata.time}`)
-        Axios.post(`${api}/meeting/update`, { id: selectedMeeting._id, newtiming })
+        Axios.post(`${api}/meeting/reschedule`, { id: selectedMeeting._id, newtiming })
             .then(newDoc => {
                 dispatch({ type: "RESCHEDULE", payload: newDoc.data })
+            })
+            .catch(err => console.log(err))
+    }
+
+    const updateMeeting = (id, status) => {
+        Axios.post(`${api}/meeting/update`, { id, status })
+            .then(res => {
+                dispatch({ type: "UPDATE", payload: res.data })
             })
             .catch(err => console.log(err))
     }
@@ -66,7 +73,7 @@ const Meetings = () => {
                         {
                             meets && meets.map((meet, index) => {
                                 return (
-                                    <MeetingCard key={index} meet={meet} selectMeeting={selectMeeting} />
+                                    <MeetingCard key={index} meet={meet} selectMeeting={selectMeeting} updateMeeting={updateMeeting} />
                                 )
                             })
                         }

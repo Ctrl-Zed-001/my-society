@@ -10,7 +10,7 @@ const ComplainCard = ({ viewComplain, complain, resolve, deleteComplain }) => {
                 <div className="card-body">
                     <div className="dropdown float-end">
                         <i className="bi bi-three-dots-vertical dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></i>
-                        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <ul className="dropdown-menu shadow border-0" aria-labelledby="dropdownMenuButton">
                             <li><p data-bs-toggle="modal" data-bs-target="#viewComplainModal" onClick={() => viewComplain(complain)} className="dropdown-item mb-0">View</p></li>
                             <li><p onClick={() => resolve(complain._id)} className="dropdown-item mb-0" >
                                 {

@@ -18,12 +18,25 @@ router.post("/new", (req, res, next) => {
         .catch(err => res.status(500).send(err))
 })
 
-router.post('/update', (req, res, next) => {
+router.post('/reschedule', (req, res, next) => {
     Meeting.findById(req.body.id)
         .then(doc => {
             doc.date_time = req.body.newtiming
             doc.save()
                 .then(newDoc => res.status(200).send(newDoc))
+                .catch(err => res.status(500).send(err))
+        })
+        .catch(err => res.status(500).send(err))
+})
+
+router.post("/update", (req, res, next) => {
+    Meeting.findById(req.body.id)
+        .then(doc => {
+            doc.status = req.body.status
+            doc.save()
+                .then(newdoc => {
+                    res.status(200).send(newdoc)
+                })
                 .catch(err => res.status(500).send(err))
         })
         .catch(err => res.status(500).send(err))

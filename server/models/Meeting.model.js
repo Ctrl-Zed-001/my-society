@@ -2,7 +2,8 @@ const mongoose = require("mongoose")
 
 const meeting_schema = new mongoose.Schema({
     subject: String,
-    date_time: Date
+    date_time: Date,
+    status: String
 }, {
     timestamps: true
 })

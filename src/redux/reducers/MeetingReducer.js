@@ -11,6 +11,11 @@ const MeetingReducer = (state = initState, action) => {
             let index = allMeets.findIndex(m => m._id === action.payload._id)
             allMeets[index] = action.payload;
             return [...allMeets]
+        case "UPDATE":
+            let allM = [...state];
+            let i = allM.findIndex(m => m._id === action.payload._id)
+            allM[i] = action.payload;
+            return [...allM]
         default:
             return state
     }
