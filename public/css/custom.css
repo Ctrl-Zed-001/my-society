@@ -42,3 +42,9 @@ a{
     bottom: 1rem;
     right: 1rem;
 }
+.dropdown{
+    transform: translateY(-12px);
+}
+.dropdown-toggle::after{
+    display: none;
+}

@@ -1,4 +1,6 @@
-const ComplainReducer = (state = [], action) => {
+const initState = [];
+
+const ComplainReducer = (state = initState, action) => {
     switch (action.type) {
         case "GETALLCOMPLAINS":
             return [

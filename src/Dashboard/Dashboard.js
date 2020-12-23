@@ -10,6 +10,7 @@ const Dashboard = () => {
                 <div className="container-fluid">
                     <div className="row">
                         <DashCard link="/complains" icon="bad-review.svg" name="Complains" />
+                        <DashCard link="/meetings" icon="meeting.svg" name="Meetings" />
                     </div>
                 </div>
             </div>
