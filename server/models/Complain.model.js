@@ -5,7 +5,7 @@ const complainSchema = new mongoose.Schema({
     detail: String,
     username: String,
     flat: String,
-    status: String
+    status: { type: Boolean, default: false }
 }, {
     timestamps: true
 })

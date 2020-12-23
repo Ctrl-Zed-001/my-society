@@ -48,3 +48,6 @@ a{
 .dropdown-toggle::after{
     display: none;
 }
+.dropdown-item.active, .dropdown-item:active{
+    background-color: transparent;
+}

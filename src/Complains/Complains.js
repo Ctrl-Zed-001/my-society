@@ -3,7 +3,7 @@ import NavbarPage from '../Components/NavbarPage'
 import ComplainCard from './ComplainCard'
 import NewComplainModal from './NewComplainModal'
 import ViewComplainModal from './ViewComplainModal'
-import axios from "axios"
+import Axios from "axios"
 import { api } from "../Address"
 import { useDispatch, useSelector } from "react-redux"
 
@@ -14,7 +14,7 @@ const Complains = () => {
     const dispatch = useDispatch()
 
     const getAllComplains = async () => {
-        await axios.get(`${api}/complain/all`)
+        await Axios.get(`${api}/complain/all`)
             .then(docs => {
                 dispatch({ type: "GETALLCOMPLAINS", payload: docs.data })
             })
@@ -34,8 +34,26 @@ const Complains = () => {
     }
 
     const addComplain = (newData) => {
-        axios.post(`${api}/complain/new`, newData)
-            .then(doc => console.log(doc.data))
+        Axios.post(`${api}/complain/new`, newData)
+            .then(res => {
+                dispatch({ type: "NEWCOMPLAIN", payload: res.data })
+            })
+            .catch(err => console.log(err))
+    }
+
+    const resolve = (id) => {
+        Axios.post(`${api}/complain/resolve`, { id: id })
+            .then(res => {
+                dispatch({ type: "RESOLVE", payload: res.data })
+            })
+            .catch(err => console.log(err))
+    }
+
+    const deleteComplain = (id) => {
+        Axios.post(`${api}/complain/delete`, { id: id })
+            .then(res => {
+                dispatch({ type: "DELETE", payload: res.data })
+            })
             .catch(err => console.log(err))
     }
 
@@ -50,7 +68,7 @@ const Complains = () => {
                     <div className="row">
                         {
                             complains.map((complain, index) => {
-                                return <ComplainCard key={index} viewComplain={viewComplain} complain={complain} />
+                                return <ComplainCard key={index} viewComplain={viewComplain} complain={complain} resolve={resolve} deleteComplain={deleteComplain} />
                             })
                         }
                     </div>
