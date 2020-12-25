@@ -11,6 +11,7 @@ const Dashboard = () => {
                     <div className="row">
                         <DashCard link="/complains" icon="bad-review.svg" name="Complains" />
                         <DashCard link="/meetings" icon="meeting.svg" name="Meetings" />
+                        <DashCard link="/notices" icon="notice.svg" name="Notices" />
                     </div>
                 </div>
             </div>

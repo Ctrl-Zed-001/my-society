@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const meeting_schema = new mongoose.Schema({
+const meetingSchema = new mongoose.Schema({
     subject: String,
     date_time: Date,
     status: String
@@ -8,6 +8,6 @@ const meeting_schema = new mongoose.Schema({
     timestamps: true
 })
 
-const meeting_model = mongoose.model("meeting", meeting_schema)
+const meetingModel = mongoose.model("meeting", meetingSchema)
 
-module.exports = meeting_model
+module.exports = meetingModel
